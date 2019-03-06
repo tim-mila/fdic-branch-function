@@ -1,0 +1,5 @@
+profile: function-aws
+defaultPackage: fdic.branch.function
+---
+testFramework: junit
+sourceLanguage: java
