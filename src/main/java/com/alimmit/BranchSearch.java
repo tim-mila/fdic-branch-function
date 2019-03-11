@@ -8,6 +8,8 @@ public class BranchSearch implements Serializable {
 
     private String institutionName;
     private String q;
+    private int offset;
+    private int limit;
     private String[] fields;
 
     public BranchSearch() {
@@ -49,5 +51,21 @@ public class BranchSearch implements Serializable {
 
     public void setFields(final String[] fields) {
         this.fields = fields;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(final int offset) {
+        this.offset = offset;
+    }
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(final int limit) {
+        this.limit = limit;
     }
 }

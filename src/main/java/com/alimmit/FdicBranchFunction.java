@@ -19,7 +19,11 @@ public class FdicBranchFunction implements Function<BranchSearch, String> {
         if (StringUtils.isNotBlank(branchSearch.getQ())) {
             filter = Filter.and(institutionFilter, Filter.value("OFFNAME", branchSearch.getQ()));
         }
-        final FdicQuery query = FdicQuery.from(Endpoint.Location).filter(filter);
+
+        int limit = branchSearch.getLimit() > 0 ? branchSearch.getLimit() : 10;
+        int offset = branchSearch.getOffset() > 0 ? branchSearch.getOffset() : 0;
+
+        final FdicQuery query = FdicQuery.from(Endpoint.Location).filter(filter).offset(offset).limit(limit).sortBy("OFFNAME").sortOrder(FdicQuery.SortOrder.ASC);
 
         if (null != branchSearch.getFields() && branchSearch.getFields().length > 0) {
             query.fields(branchSearch.getFields());
